@@ -41,11 +41,11 @@ all: $(TARGET)
 
 # target executable
 $(TARGET): $(OBJECTS)
-	$(CC) $(LDFLAGS) -o $(TARGET) $(OBJECTS) $(LIBPATH) $(LIBS)
+	$(CC) $(LDFLAGS) -o $(TARGET) $(OBJECTS) $(LIBPATH) $(LIBS) -L/opt/homebrew/lib
 
 # object files
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c $(DEPS) | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCLPATH)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLPATH) -I/opt/homebrew/include
 
 # create object files directory
 $(OBJDIR):
